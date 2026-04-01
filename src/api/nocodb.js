@@ -6,44 +6,42 @@ const headers = {
   'xc-token': API_TOKEN,
 };
 
-export async function fetchWorkouts() {
-  const res = await fetch(`${API_BASE}/api/v2/tables/workouts/records`, {
+async function apiFetch(path, options = {}) {
+  const res = await fetch(`${API_BASE}${path}`, {
     headers,
+    ...options,
   });
-  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(`API error: ${res.status} ${res.statusText}`);
+  }
+  return res.json();
+}
+
+export async function fetchWorkouts() {
+  const data = await apiFetch('/api/v2/tables/workouts/records');
   return data.list;
 }
 
 export async function addWorkout(record) {
-  const res = await fetch(`${API_BASE}/api/v2/tables/workouts/records`, {
+  return apiFetch('/api/v2/tables/workouts/records', {
     method: 'POST',
-    headers,
     body: JSON.stringify(record),
   });
-  return res.json();
 }
 
 export async function fetchPRs() {
-  const res = await fetch(`${API_BASE}/api/v2/tables/prs/records`, {
-    headers,
-  });
-  const data = await res.json();
+  const data = await apiFetch('/api/v2/tables/prs/records');
   return data.list;
 }
 
 export async function addPR(record) {
-  const res = await fetch(`${API_BASE}/api/v2/tables/prs/records`, {
+  return apiFetch('/api/v2/tables/prs/records', {
     method: 'POST',
-    headers,
     body: JSON.stringify(record),
   });
-  return res.json();
 }
 
 export async function fetchProgress() {
-  const res = await fetch(`${API_BASE}/api/v2/tables/progress/records`, {
-    headers,
-  });
-  const data = await res.json();
+  const data = await apiFetch('/api/v2/tables/progress/records');
   return data.list;
 }
