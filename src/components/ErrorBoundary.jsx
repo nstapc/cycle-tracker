@@ -48,7 +48,7 @@ export default class ErrorBoundary extends Component {
                 </li>
                 <li>
                   Fill in <code style={codeStyle}>VITE_NOCODB_URL</code>,{' '}
-                  <code style={codeStyle}>VITE_NOCODB_TOKEN</code>, and the table
+                  <code style={codeStyle}>VITE_NOCODB_API_TOKEN</code>, and the table
                   IDs from your NocoDB instance
                 </li>
                 <li>Restart the dev server</li>
