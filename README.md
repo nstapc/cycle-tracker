@@ -90,7 +90,7 @@ cp .env.example .env.local
 Fill in the values:
 
 ```
-VITE_NOCODB_URL=https://your-instance.railway.app
+VITE_NOCODB_BASE_URL=https://your-instance.railway.app
 VITE_NOCODB_API_TOKEN=your-api-token
 VITE_NOCODB_BASE_ID=your-base-id
 VITE_NOCODB_SESSIONS_TABLE_ID=your-sessions-table-id
